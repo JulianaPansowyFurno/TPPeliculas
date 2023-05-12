@@ -16,6 +16,8 @@ export default class PeliculaService {
         return response.recordset;
     }
 
+    
+
     // getPizzaById = async (id) => {
     //     console.log('This is a function on the service');
 
