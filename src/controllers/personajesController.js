@@ -40,4 +40,13 @@ router.put('/:id', async (req, res) => {
   return res.status(200).json(personaje);
 });
 
+router.get('/:id', async (req, res) => {
+  console.log(`Request URL Param: ${req.params.id}`);
+  console.log(`This is a get operation`);
+  
+  const personajes = await personajeService.PersonajesDetalles(req.params.id);
+
+  return res.status(200).json(personajes);
+});
+
 export default router;

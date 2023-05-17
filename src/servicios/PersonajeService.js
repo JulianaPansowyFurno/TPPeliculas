@@ -57,4 +57,19 @@ export default class PersonajeService {
 
         return response.recordset;
     }
+
+    PersonajesDetalles = async (id) => {
+        console.log('This is a function on the service');
+        const pool = await sql.connect(config);
+        const response = await pool.request()
+        .input('Id',sql.Int, id)
+        .query(`Select Pelicula.Titulo, Personaje.*  
+                FROM ${PersonajeTabla} 
+                inner join PersonajesAsociados on ${PersonajeTabla}.Id =  PersonajesAsociados.FkPersonajes 
+                inner join Pelicula on PersonajesAsociados.FkPeliculas = Pelicula.Id 
+                WHERE Personaje.Id = @Id`);
+                // terminar
+        console.log(response)
+        return response.recordset;
+    }
 }

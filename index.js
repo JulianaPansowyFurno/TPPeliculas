@@ -5,6 +5,7 @@ import PersonajeRouter from "./src/controllers/personajesController.js";
 const app = express();
 const port = 5000;
 
+//http://localhost:5000/characters/5
 app.use(express.json());
 
 app.use("/movie", PeliculaRouter);
