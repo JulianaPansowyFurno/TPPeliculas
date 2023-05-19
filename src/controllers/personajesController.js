@@ -7,8 +7,10 @@ const personajeService = new PersonajeService();
 
 router.get('', async (req, res) => {
   console.log(`This is a get operation`);
-  
-  const personajes = await personajeService.getPersonaje();
+  const name = req.query.name
+  const age = req.query.age
+  const movie = req.query.movie
+  const personajes = await personajeService.BusquedaPersonaje();
 
   return res.status(200).json(personajes);
 });
@@ -48,5 +50,6 @@ router.get('/:id', async (req, res) => {
 
   return res.status(200).json(personajes);
 });
+
 
 export default router;

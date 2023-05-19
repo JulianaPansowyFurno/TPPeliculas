@@ -10,7 +10,7 @@ export default class PeliculaService {
         console.log('This is a function on the service');
 
         const pool = await sql.connect(config);
-        const response = await pool.request().query(`SELECT * from ${PeliculaTabla}`);
+        const response = await pool.request().query(`SELECT Id, Imagen, Titulo, FechaCreacion from ${PeliculaTabla}`);
         console.log(response)
 
         return response.recordset;

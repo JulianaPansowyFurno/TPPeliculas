@@ -63,13 +63,43 @@ export default class PersonajeService {
         const pool = await sql.connect(config);
         const response = await pool.request()
         .input('Id',sql.Int, id)
-        .query(`Select Pelicula.Titulo, Personaje.*  
-                FROM ${PersonajeTabla} 
-                inner join PersonajesAsociados on ${PersonajeTabla}.Id =  PersonajesAsociados.FkPersonajes 
-                inner join Pelicula on PersonajesAsociados.FkPeliculas = Pelicula.Id 
-                WHERE Personaje.Id = @Id`);
-                // terminar
+        .query(`Select * FROM ${PersonajeTabla} WHERE Personaje.Id = @Id`);
+                
+        const pool2 = await sql.connect(config);
+        const response2 = await pool2.request()
+        .input('Id',sql.Int, id)
+        .query(`Select Pelicula.Titulo FROM Pelicula inner join PersonajesAsociados on PersonajesAsociados.FkPeliculas = Pelicula.Id WHERE PersonajesAsociados.FkPersonajes = @Id`);
+
         console.log(response)
-        return response.recordset;
+        const personaje = response.recordset[0]
+        personaje.pelicula = response2.recordset;
+        return personaje;
+    }
+
+    BusquedaPersonaje = async (name, age , movie) => {
+        console.log('This is a function on the service');
+        const pool = await sql.connect(config);
+        const queryString = (`Select Imagen, Nombre, Id FROM ${PersonajeTabla} `)
+
+        if(name)
+        {
+            queryString += " where Personaje.Nombre = @Nombre "
+        }
+        if(age)
+        {
+            queryString += " where Personaje.Edad = @Edad "
+        }
+        if(movie)
+        {
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where  PersonajesAsociados.FkPeliculas = @Id"
+        }
+
+        const response = await pool.request()
+        .input('Nombre',sql.NChar, name)
+        .input('Edad',sql.Int, age)
+        .input('Id',sql.Int, movie)
+        .query(queryString);
+        console.log(response)
+        return queryString;
     }
 }
