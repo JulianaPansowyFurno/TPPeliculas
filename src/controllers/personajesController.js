@@ -6,17 +6,17 @@ const router = Router();
 const personajeService = new PersonajeService();
 
 router.get('', async (req, res) => {
-  console.log(`This is a get operation`);
-  const name = req.query.name
-  const age = req.query.age
-  const movie = req.query.movie
-  const personajes = await personajeService.BusquedaPersonaje();
+  console.log(`This is a get operation 1`);
+  let name = req.query.name
+  let age = req.query.age
+  let movie = req.query.movie
+  const personajes = await personajeService.BusquedaPersonaje(name, age, movie);
 
   return res.status(200).json(personajes);
 });
 
 
-router.post('', async (req, res) => {
+ router.post('', async (req, res) => {
     console.log(`This is a post operation`);
     
     const personajes = await personajeService.createPersonaje(req.body);
@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
   const personajes = await personajeService.PersonajesDetalles(req.params.id);
 
   return res.status(200).json(personajes);
-});
+}); 
 
 
 export default router;

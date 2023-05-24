@@ -6,14 +6,47 @@ const PersonajeTabla = process.env.DB_TABLA_PERSONAJE;
 
 export default class PersonajeService {
 
-    getPersonaje = async () => {
-        console.log('This is a function on the service');
+    BusquedaPersonaje = async (name, age, movie) => {
+        console.log('This is a function on the service 1');
+        let queryString = `SELECT  Personaje.Imagen,  Personaje.Nombre, Personaje.Id from ${PersonajeTabla}`
+        
+        if(name && age==null && movie==null)
+        {
+            queryString += " where Personaje.Nombre = @Nombre "
+        }
+        else if(name && age && movie==null)
+        {
+            queryString += " where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad "
+        }
+        else if(name && age && movie)
+        {
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad and Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
+        }
+        if(age && name==null && movie==null)
+        {
+            queryString += " where Personaje.Edad = @Edad "
+        }
+        if(age && name==null && movie)
+        {
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
+        }
+        else if(movie && name==null && age==null)
+        {
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where PersonajesAsociados.FkPeliculas = @Id "
+        }
+        else if(movie && name && age==null)
+        {
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where PersonajesAsociados.FkPeliculas = @Id and Personaje.Nombre = @Nombre "
+        }
 
         const pool = await sql.connect(config);
-        const response = await pool.request().query(`SELECT Imagen, Nombre, Id from ${PersonajeTabla}`);
+        const response = await pool.request()
+        .input('Nombre',sql.NChar, name)
+        .input('Edad',sql.Int, age)
+        .input('Id',sql.Int, movie)
+        .query(queryString);
         console.log(response)
-
-        return response.recordset;
+        return response;
     }
 
     createPersonaje = async (personaje) => {
@@ -74,32 +107,5 @@ export default class PersonajeService {
         const personaje = response.recordset[0]
         personaje.pelicula = response2.recordset;
         return personaje;
-    }
-
-    BusquedaPersonaje = async (name, age , movie) => {
-        console.log('This is a function on the service');
-        const pool = await sql.connect(config);
-        const queryString = (`Select Imagen, Nombre, Id FROM ${PersonajeTabla} `)
-
-        if(name)
-        {
-            queryString += " where Personaje.Nombre = @Nombre "
-        }
-        if(age)
-        {
-            queryString += " where Personaje.Edad = @Edad "
-        }
-        if(movie)
-        {
-            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where  PersonajesAsociados.FkPeliculas = @Id"
-        }
-
-        const response = await pool.request()
-        .input('Nombre',sql.NChar, name)
-        .input('Edad',sql.Int, age)
-        .input('Id',sql.Int, movie)
-        .query(queryString);
-        console.log(response)
-        return queryString;
     }
 }

@@ -7,7 +7,7 @@ const PeliculaTabla = process.env.DB_TABLA_PELICULA;
 export default class PeliculaService {
 
     getPeliculas = async () => {
-        console.log('This is a function on the service');
+        console.log('This is a function on the service 2');
 
         const pool = await sql.connect(config);
         const response = await pool.request().query(`SELECT Id, Imagen, Titulo, FechaCreacion from ${PeliculaTabla}`);
