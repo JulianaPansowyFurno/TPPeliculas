@@ -8,10 +8,49 @@ const peliculaService = new PeliculaService();
 router.get('', async (req, res) => {
   console.log(`This is a get operation`);
   
-  const peliculas = await peliculaService.getPeliculas();
+  let name = req.query.name
+  let order = req.query.order
+  const peliculas = await peliculaService.BusquedaPeliculas(name, order);
 
   return res.status(200).json(peliculas);
 });
+
+router.get('/:id', async (req, res) => {
+  console.log(`Request URL Param: ${req.params.id}`);
+  console.log(`This is a get operation`);
+  
+  const peliculas = await peliculaService.PeliculaDetalles(req.params.id);
+
+  return res.status(200).json(peliculas);
+}); 
+
+router.post('', async (req, res) => {
+  console.log(`This is a post operation`);
+  
+  const pelicula = await peliculaService.createPelicula(req.body);
+  return res.status(201).json(pelicula);
+  
+});
+
+router.delete('/:id', async (req, res) => {
+  console.log(`Request URL Param: ${req.params.id}`);
+  console.log(`This is a delete operation`);
+
+  const pelicula = await peliculaService.deletePeliculaById(req.params.id);
+
+  return res.status(200).json(pelicula);
+});
+
+router.put('/:id', async (req, res) => {
+  console.log(`Request URL Param: ${req.params.id}`);
+  console.log(`This is a put operation`);
+
+  const pelicula = await peliculaService.updatePeliculaById(req.params.id,req.body);
+
+  return res.status(200).json(pelicula);
+});
+
+
 
 // router.get('/:id', async (req, res) => {
 //   console.log(`Request URL Param: ${req.params.id}`);
