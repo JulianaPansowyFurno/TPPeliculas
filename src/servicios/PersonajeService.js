@@ -20,13 +20,13 @@ export default class PersonajeService {
         }
         else if(name && age && movie)
         {
-            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad and Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
+            queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
         }
-        if(age && name==null && movie==null)
+        else if(age && name==null && movie==null)
         {
             queryString += " where Personaje.Edad = @Edad "
         }
-        if(age && name==null && movie)
+        else if(age && movie && name==null)
         {
             queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
         }
@@ -45,8 +45,9 @@ export default class PersonajeService {
         .input('Edad',sql.Int, age)
         .input('Id',sql.Int, movie)
         .query(queryString);
+        console.log(queryString)
         console.log(response)
-        return response;
+        return response.recordset;
     }
 
     createPersonaje = async (personaje) => {

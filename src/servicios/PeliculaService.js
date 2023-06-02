@@ -10,27 +10,37 @@ export default class PeliculaService {
         console.log('This is a function on the service 1');
         let queryString = `SELECT  Pelicula.Id, Pelicula.Imagen, Pelicula.Titulo, Pelicula.FechaCreacion from ${PeliculaTabla}`
         
-        if(name)
+        if(name && !order)
         {
-            queryString += " where Pelicula.Titulo = @Titulo "
+            queryString += " WHERE Pelicula.Titulo LIKE CONCAT('%', @Titulo, '%') "
         }
-        if(order == "ASC" && order != "DESC")
+        if(order == "ASC" && order != "DESC" && !name)
         {
-            queryString += " order by Pelicula.FechaCreacion ASC "
+            queryString += " ORDER BY Pelicula.FechaCreacion ASC "
         }
-        else if(order == "DESC" && order != "ASC")
+        if(order == "DESC" && order != "ASC" && !name)
         {
-            queryString += " order by Pelicula.FechaCreacion DESC "
+            queryString += " ORDER BY Pelicula.FechaCreacion DESC "
         }
+        if (order == "ASC" && order != "DESC" && name)
+        {
+            queryString += " WHERE Pelicula.Titulo LIKE CONCAT('%', @Titulo, '%') ORDER BY Pelicula.FechaCreacion ASC "
+        }
+
+        if (order == "DESC" && order != "ASC" && name)
+        {
+            queryString += " WHERE Pelicula.Titulo LIKE CONCAT('%', @Titulo, '%') ORDER BY Pelicula.FechaCreacion DESC "
+        }
+
 
 
         const pool = await sql.connect(config);
         const response = await pool.request()
         .input('Titulo',sql.NChar, name)
         .query(queryString);
-        console.log(response)
-        return response;
-    } 
+        console.log(queryString)
+        return response.recordset;
+    }
 
     PeliculaDetalles = async (id) => {
         console.log('This is a function on the service');

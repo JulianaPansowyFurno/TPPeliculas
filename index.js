@@ -2,6 +2,7 @@ import express from "express";
 import PeliculaRouter from "./src/controllers/peliculasController.js";
 import PersonajeRouter from "./src/controllers/personajesController.js";
 
+
 const app = express();
 const port = 5000;
 
