@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "79e20424-9626-452c-a033-2ec44ebcc47c",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BusquedaPeliculas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJjb250cmFzZcOxYVVzZXIiOiJBbHVtbm8iLCJpYXQiOjE2ODYzMTc5ODYsImV4cCI6MTY4NjM1MjU0NiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwic3ViIjoiQWx1bW5vIn0.AXXIGjxODzIQPZM3uKhKa96akZULTgoVA_jS_qg8eFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/movie?name=Rapidos y furiosos&order=ASC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movie"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Rapidos y furiosos"
+						},
+						{
+							"key": "order",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PeliculaDetalles",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePelicula",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deletePeliculaById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updatePeliculaById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "BusquedaPersonaje",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
