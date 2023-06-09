@@ -1,5 +1,9 @@
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
-export default getSignedToken = () => {
+export default class AuthService {
+
+ getSignedToken = () => {
     const usuario = 'Alumno';
     const contraeña = 'Alumno';
     const token = jwt.sign(
@@ -7,9 +11,9 @@ export default getSignedToken = () => {
         payload: "custom payload",
         contraseñaUser: contraeña,
       },
-      process.env.AUTH0_HS256_KEY,
+      process.env.AUTH_HS256_KEY,
       {
-        issuer: "http://localhost/",
+        issuer: process.env.AUTH_ISSUER_URL,
         subject: usuario,
         audience: ["http://localhost/"],
         expiresIn: 60 * 24 * 24,
@@ -18,3 +22,4 @@ export default getSignedToken = () => {
   
     return token;
   };
+}
