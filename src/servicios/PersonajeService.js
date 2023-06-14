@@ -10,11 +10,11 @@ export default class PersonajeService {
         console.log('This is a function on the service 1');
         let queryString = `SELECT  Personaje.Imagen,  Personaje.Nombre, Personaje.Id from ${PersonajeTabla}`
         
-        if(name && age==null && movie==null)
+        if(name && !age && !movie)
         {
             queryString += " where Personaje.Nombre = @Nombre "
         }
-        else if(name && age && movie==null)
+        else if(name && age && !movie)
         {
             queryString += " where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad "
         }
@@ -22,19 +22,19 @@ export default class PersonajeService {
         {
             queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Nombre = @Nombre and Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
         }
-        else if(age && name==null && movie==null)
+        else if(age && !name && !movie)
         {
             queryString += " where Personaje.Edad = @Edad "
         }
-        else if(age && movie && name==null)
+        else if(age && movie && !name)
         {
             queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where Personaje.Edad = @Edad and PersonajesAsociados.FkPeliculas = @Id "
         }
-        else if(movie && name==null && age==null)
+        else if(movie && !name && !age)
         {
             queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where PersonajesAsociados.FkPeliculas = @Id "
         }
-        else if(movie && name && age==null)
+        else if(movie && name && !age)
         {
             queryString += " inner join PersonajesAsociados on PersonajesAsociados.FkPersonajes = Personaje.Id where PersonajesAsociados.FkPeliculas = @Id and Personaje.Nombre = @Nombre "
         }

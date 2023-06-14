@@ -30,12 +30,6 @@ router.post('', Authenticate, async (req, res) => {
   
   const pelicula = await peliculaService.createPelicula(req.body);
   return res.status(201).json(pelicula);
-  //{
-    // "Imagen" : 
-    //"Titulo" : "Legally Blonde",
-    //"FechaCreacion": "1990/06/09",
-    //"Calificacion" : 2
-  //}
 });
 
 router.delete('/:id', Authenticate, async (req, res) => {
@@ -54,12 +48,6 @@ router.put('/:id', Authenticate, async (req, res) => {
   const pelicula = await peliculaService.updatePeliculaById(req.params.id,req.body);
 
   return res.status(200).json(pelicula);
-  //{
-    // "Imagen" : 
-    //"Titulo" : "Legally Blonde",
-    //"FechaCreacion": "1990/06/09",
-    //"Calificacion" : 2
-  //}
 });
 
 export default router;

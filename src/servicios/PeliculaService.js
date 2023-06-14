@@ -32,8 +32,6 @@ export default class PeliculaService {
             queryString += " WHERE Pelicula.Titulo LIKE CONCAT('%', @Titulo, '%') ORDER BY Pelicula.FechaCreacion DESC "
         }
 
-
-
         const pool = await sql.connect(config);
         const response = await pool.request()
         .input('Titulo',sql.NChar, name)

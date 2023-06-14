@@ -1,88 +1,314 @@
 {
 	"info": {
-		"_postman_id": "79e20424-9626-452c-a033-2ec44ebcc47c",
-		"name": "New Collection",
+		"_postman_id": "53e91dbe-6c2f-401a-918b-2cc1ab16c6a1",
+		"name": "TPPelicula",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "BusquedaPeliculas",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJjb250cmFzZcOxYVVzZXIiOiJBbHVtbm8iLCJpYXQiOjE2ODYzMTc5ODYsImV4cCI6MTY4NjM1MjU0NiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwic3ViIjoiQWx1bW5vIn0.AXXIGjxODzIQPZM3uKhKa96akZULTgoVA_jS_qg8eFQ",
-							"type": "string"
+			"name": "Pelicula",
+			"item": [
+				{
+					"name": "BusquedaPeliculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movie?name=Rapidos y furiosos&order=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Rapidos y furiosos"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/movie?name=Rapidos y furiosos&order=ASC",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movie"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Rapidos y furiosos"
-						},
-						{
-							"key": "order",
-							"value": "ASC"
+				{
+					"name": "PeliculaDetalles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movie/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie",
+								"1"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "createPelicula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\" : \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeVMYPmGMNwSYd6M_N2wkLpVW1n8MaMslPQw&usqp=CAU\",\r\n    \"Titulo\" : \"Legally Blonde\",\r\n    \"FechaCreacion\": \"1990/06/09\",\r\n    \"Calificacion\" : 2\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePeliculaById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movie/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePeliculaById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"Imagen\" : \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeVMYPmGMNwSYd6M_N2wkLpVW1n8MaMslPQw&usqp=CAU\",\r\n    \"Titulo\" : \"Legally Blonde\",\r\n    \"FechaCreacion\": \"1990/06/09\",\r\n    \"Calificacion\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movie/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie",
+								"11"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "PeliculaDetalles",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
+			"name": "Personajes",
+			"item": [
+				{
+					"name": "BusquedaPersonaje",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/character?name=Sally&age=35&movie=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"character"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Sally"
+								},
+								{
+									"key": "age",
+									"value": "35"
+								},
+								{
+									"key": "movie",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPersonaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://i.ytimg.com/vi/nFi6e6Rs2so/maxresdefault.jpg\",\r\n    \"Nombre\": \"Jarvis\",\r\n    \"Edad\": 0,\r\n    \"Peso\": 2000,\r\n    \"Historia\": \"es una inteligencia artificial, like chatgpt, that is really gooddddddd and beter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/character",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePersonajeById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://i.ytimg.com/vi/nFi6e6Rs2so/maxresdefault.jpg\",\r\n    \"Nombre\": \"Jarvis\",\r\n    \"Edad\": 0,\r\n    \"Peso\": 2000,\r\n    \"Historia\": \"es una inteligencia artificial, like chatgpt, that is really gooddddddd and beter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/character/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"character",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePersonajeById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Imagen\": \"https://i.ytimg.com/vi/nFi6e6Rs2so/maxresdefault.jpg\",\r\n    \"Nombre\": \"Jarvis\",\r\n    \"Edad\": 1,\r\n    \"Peso\": 2000,\r\n    \"Historia\": \"FELIZ CUMPLEAÑOS JARVIS! es una inteligencia artificial, like chatgpt, that is really gooddddddd and beter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/character/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"character",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonajesDetalles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/character/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"character",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJjb250cmFzZcOxYVVzZXIiOiJBbHVtbm8iLCJpYXQiOjE2ODY3NDExMjUsImV4cCI6MTY4Njc3NTY4NSwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwic3ViIjoiQWx1bW5vIn0.qn_Vw_9iU-3tukmKSj9YFYpalxBkDJ19cg2ohUMQkXg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "CreatePelicula",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "deletePeliculaById",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "updatePeliculaById",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "BusquedaPersonaje",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

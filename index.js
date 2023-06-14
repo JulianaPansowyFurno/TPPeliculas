@@ -14,7 +14,7 @@ const port = 5000;
 passport.use(jwtStrategy);
 app.use(passport.initialize());
 
-//http://localhost:5000/characters/5
+//http://localhost:5000/character/5
 app.use(express.json());
 
 app.use("/movie", PeliculaRouter);

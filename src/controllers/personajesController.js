@@ -21,7 +21,6 @@ router.get('', Authenticate, async (req, res) => {
     
     const personajes = await personajeService.createPersonaje(req.body);
     return res.status(201).json(personajes);
-    
 });
 
 router.delete('/:id', Authenticate, async (req, res) => {
