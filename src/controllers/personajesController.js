@@ -7,7 +7,7 @@ const router = Router();
 const personajeService = new PersonajeService();
 
 router.get('', Authenticate, async (req, res) => {
-  console.log(`This is a get operation 1`);
+  console.log(`This is a get operation`);
   let name = req.query.name
   let age = req.query.age
   let movie = req.query.movie

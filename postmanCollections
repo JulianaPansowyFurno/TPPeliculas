@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "53e91dbe-6c2f-401a-918b-2cc1ab16c6a1",
+		"_postman_id": "55995247-9759-422b-aa6c-e6b4ca70ee24",
 		"name": "TPPelicula",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -43,7 +43,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/movie/1",
+							"raw": "http://localhost:5000/movie/15",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -51,7 +51,7 @@
 							"port": "5000",
 							"path": [
 								"movie",
-								"1"
+								"15"
 							]
 						}
 					},
@@ -279,6 +279,26 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -286,7 +306,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJjb250cmFzZcOxYVVzZXIiOiJBbHVtbm8iLCJpYXQiOjE2ODY3NDExMjUsImV4cCI6MTY4Njc3NTY4NSwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwic3ViIjoiQWx1bW5vIn0.qn_Vw_9iU-3tukmKSj9YFYpalxBkDJ19cg2ohUMQkXg",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJjb250cmFzZcOxYVVzZXIiOiJBbHVtbm8iLCJpYXQiOjE2ODY5MTg3NzEsImV4cCI6MTY4Njk1MzMzMSwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvIiwic3ViIjoiQWx1bW5vIn0.srh52qzbn5-MHpsfwfVj1oChJTcrGEjTKYEz3vu8bes",
 				"type": "string"
 			}
 		]
