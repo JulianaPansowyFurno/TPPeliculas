@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon ./index.js localhost 5000"
   },
   "author": "JulianaPansowyFurno",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "mssql": "^8.1.0",
     "passport": "0.5.2",
     "passport-jwt": "4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
