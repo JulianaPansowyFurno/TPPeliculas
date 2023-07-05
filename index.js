@@ -5,13 +5,9 @@ import PersonajeRouter from "./src/controllers/personajesController.js";
 import { jwtStrategy } from "./src/common/jwt.strategy.js";
 import authController from "./src/controllers/authController.js";
 import 'dotenv/config'
-const router = require('express').Router();
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  swaggerJsdoc = require("swagger-jsdoc"),
-  swaggerUi = require("swagger-ui-express");
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger.json" assert { type: "json" };
+import swaggerJsdoc from "swagger-jsdoc";
 
 const app = express();
 const port = 5000;
@@ -26,8 +22,8 @@ app.use("/movie", PeliculaRouter);
 app.use("/character", PersonajeRouter);
 app.use("/auth/login", authController);
 
-router.use('/api-docs', swaggerUi.serve);
-router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+express.router.use('/api-docs', swaggerUi.serve);
+express.router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 const options = {
   definition: {
@@ -49,7 +45,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://localhost:5000",
       },
     ],
   },
@@ -64,5 +60,5 @@ app.use(
 );
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`Listening on port ${5000}`);
 });

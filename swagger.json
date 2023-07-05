@@ -1,0 +1,313 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TPPelicula",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Pelicula"
+    },
+    {
+      "name": "Personajes"
+    }
+  ],
+  "paths": {
+    "/movie": {
+      "get": {
+        "tags": [
+          "Pelicula"
+        ],
+        "summary": "BusquedaPeliculas",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Rapidos y furiosos"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ASC"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pelicula"
+        ],
+        "summary": "createPelicula",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "Imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeVMYPmGMNwSYd6M_N2wkLpVW1n8MaMslPQw&usqp=CAU",
+                  "Titulo": "Legally Blonde",
+                  "FechaCreacion": "1990/06/09",
+                  "Calificacion": 2
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/movie/15": {
+      "get": {
+        "tags": [
+          "Pelicula"
+        ],
+        "summary": "PeliculaDetalles",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/movie/13": {
+      "delete": {
+        "tags": [
+          "Pelicula"
+        ],
+        "summary": "deletePeliculaById",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/movie/11": {
+      "put": {
+        "tags": [
+          "Pelicula"
+        ],
+        "summary": "updatePeliculaById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "Imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeVMYPmGMNwSYd6M_N2wkLpVW1n8MaMslPQw&usqp=CAU",
+                  "Titulo": "Legally Blonde",
+                  "FechaCreacion": "1990/06/09",
+                  "Calificacion": 5
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/character": {
+      "get": {
+        "tags": [
+          "Personajes"
+        ],
+        "summary": "BusquedaPersonaje",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Sally"
+          },
+          {
+            "name": "age",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "35"
+          },
+          {
+            "name": "movie",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Personajes"
+        ],
+        "summary": "createPersonaje",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "Imagen": "https://i.ytimg.com/vi/nFi6e6Rs2so/maxresdefault.jpg",
+                  "Nombre": "Jarvis",
+                  "Edad": 0,
+                  "Peso": 2000,
+                  "Historia": "es una inteligencia artificial, like chatgpt, that is really gooddddddd and beter"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/character/13": {
+      "delete": {
+        "tags": [
+          "Personajes"
+        ],
+        "summary": "deletePersonajeById",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/character/14": {
+      "put": {
+        "tags": [
+          "Personajes"
+        ],
+        "summary": "updatePersonajeById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "Imagen": "https://i.ytimg.com/vi/nFi6e6Rs2so/maxresdefault.jpg",
+                  "Nombre": "Jarvis",
+                  "Edad": 1,
+                  "Peso": 2000,
+                  "Historia": "FELIZ CUMPLEAÑOS JARVIS! es una inteligencia artificial, like chatgpt, that is really gooddddddd and beter"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/character/4": {
+      "get": {
+        "tags": [
+          "Personajes"
+        ],
+        "summary": "PersonajesDetalles",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Token",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
