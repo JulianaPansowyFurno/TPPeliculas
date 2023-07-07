@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="https://pbs.twimg.com/profile_images/1233369746512515072/0MCI1z6T_400x400.jpg"></img>
+</p>
+
 # A movies and characters proyect for DAI informatics ORT.
 
 Made by: Nadine Lewit y Juliana Pansowy Furno 
@@ -19,14 +24,12 @@ npm i
 ```
 
 Execute the project.
+<br>
+With a local installation, nodemon will not be available in your system path or you can't use it directly from the command line. Instead, the local installation of nodemon can be run by calling it from within an npm script.
 
-With a local installation, nodemon will not be available in your system path or you can't use it directly from the command line. Instead, the local installation of nodemon can be run by calling it from within an npm script (such as `npm run start`).
+```bash
+npm run start
+```
+# Swagger
 
-
-
-#### Abrir el proyecto de GitHub, abrimos la base de datos y la conectamos con el proyecto.
-#### Instalar las dependencias, para hacer esto debemos hacer npm i
-#### Abrir la terminal para ejectutar el codigo
-#### Swagger
-
-[Nodejs v18.14.0] () (https://github.com/nodejs/nodejs.org/blob/main/README.md)
+Once the proyecte excuted, open the following link: [Swagger endpoints](http://localhost:5000/api-docs)`http://localhost:5000/api-docs`, where you will be able to see the different endpoint and interact with them.

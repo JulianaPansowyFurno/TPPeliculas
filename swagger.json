@@ -94,8 +94,18 @@
         }
       }
     },
-    "/movie/15": {
+    "/movie/{id}": {
       "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer",
+              "required": true
+            }
+          }
+        ],
         "tags": [
           "Pelicula"
         ],
