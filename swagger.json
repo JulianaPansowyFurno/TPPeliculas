@@ -100,10 +100,8 @@
           {
             "in": "path",
             "name": "id",
-            "schema": {
-              "type": "integer",
-              "required": true
-            }
+            "required": true,
+            "type": "integer"
           }
         ],
         "tags": [
@@ -118,10 +116,16 @@
             }
           }
         }
-      }
-    },
-    "/movie/13": {
+      },
       "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "tags": [
           "Pelicula"
         ],
@@ -134,10 +138,16 @@
             }
           }
         }
-      }
-    },
-    "/movie/11": {
+      },
       "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "tags": [
           "Pelicula"
         ],
@@ -239,8 +249,16 @@
         }
       }
     },
-    "/character/13": {
+    "/character/{id}": {
       "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "tags": [
           "Personajes"
         ],
@@ -253,10 +271,16 @@
             }
           }
         }
-      }
-    },
-    "/character/14": {
+      },
       "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "tags": [
           "Personajes"
         ],
@@ -285,10 +309,16 @@
             }
           }
         }
-      }
-    },
-    "/character/4": {
+      },
       "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "tags": [
           "Personajes"
         ],
