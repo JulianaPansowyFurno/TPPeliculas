@@ -1,14 +1,30 @@
-# A proyect developed by Nadine Lewit y Juliana Pansowy Furno
-
 <p align="center">
-  <img src="https://pbs.twimg.com/profile_images/1233369746512515072/0MCI1z6T_400x400.jpg"></img>
+  <img src="https://campus.ort.edu.ar/static/archivos/banner/6658"></img>
 </p>
 
-# This is a movies and characters proyect for DAI informatics ORT.
+# Description
 
+### What we used for this proyect
 
-This project was made with [Nodejsv18.14.0](https://github.com/nodejs/nodejs.org/blob/main/README.md),
- [Express v4.17.3](https://github.com/expressjs/express/blob/master/Readme.md) and [Nodemon v2.0.22](https://github.com/remy/nodemon/blob/main/README.md).
+* [Nodejsv18.14.0](https://github.com/nodejs/nodejs.org/blob/main/README.md)
+* [Express v4.17.3](https://github.com/expressjs/express/blob/master/Readme.md)
+* [Nodemon v2.0.22](https://github.com/remy/nodemon/blob/main/README.md)
+* A Sql DataBase in Microsoft SQL management studio
+* A Postamn collection
+* A Swagger document
+ 
+<!-- description -->
+### About
+In this proyect we have a SQL Database filled with information about movies, characters and their respective connection between them. We also have a postman archive where you can see all of the diferent endpoints and try the harcorded endpoints whereas in our Swagger document, for example, you will be able to get the movie you want beacause of the dinamic Id.
+
+## Table of contents
+
+* [Description](#description)
+* [Installation](#installation)
+* [Execute the project](#execute-the-project)
+* [Swagger](#swagger)
+* [Current project team members](#current-project-team-members)
+
 
 # Installation
 
@@ -18,16 +34,10 @@ First you have to clone the git repository by using the git bash.
 git clone https://github.com/JulianaPansowyFurno/TPPeliculas.git
 ```
 
-After opening the project, yo have to open the terminal and install de dependencies.
+you should not use the `npm i` comand due to we have included de node modules folder included already.
 
-```bash
-npm i
-```
+# Execute the project.
 
-By doing this you are installing 
-
-Execute the project.
-<br>
 With a local installation, nodemon will not be available in your system path or you can't use it directly from the command line. Instead, the local installation of nodemon can be run by calling it from within an npm script.
 
 ```bash
@@ -35,6 +45,7 @@ npm run start
 ```
 
 Once is running you can try the diferent endpoints in `Swagger`
+
 # Swagger
 
 Once the proyecte excuted, open the following link: [Swagger endpoints](http://localhost:5000/api-docs), where you will see this screen:
@@ -59,4 +70,11 @@ Now you can try every endpoint without trouble like this Get movie description e
 ![](/src/GetENdpoint.PNG) 
 
 
+
+# Current project team members
+
+* [JulianaPansowyFurno](https://github.com/JulianaPansowyFurno) -
+  **Juliana Pansowy Furno** <<julipansofurno@gmail.com>> (she/her)
+* [NadineLewit](https://github.com/NadineLewit) -
+  **Nadine Lewit** <<nadine.lewit@gmail.com>> (she/her)
 
